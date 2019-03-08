@@ -72,6 +72,9 @@ class Interval:
         else:
             raise TypeError("interval unrecognized")
 
+    def discretize(self, num=10000):
+        return np.linspace(self.lower, self.upper, num=num, endpoint=True)
+
     def split_at(self, number):
         """
         split this interval into two sub-intervals at given number
@@ -139,7 +142,7 @@ class MonteCarloIntegrator(BaseIntegrator):
         :return: Interval, representing the range of self.f on `domain`
         """
         # discretize domain and range for computability
-        discrete_domain = np.linspace(*domain.bounds, num=n_steps, endpoint=True)
+        discrete_domain = domain.discretize(n_steps)
         discrete_range = self.f(discrete_domain)
         # HACK: assuming continuity of self.f
         return Interval(np.min(discrete_range), np.max(discrete_range))
