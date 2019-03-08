@@ -45,5 +45,5 @@ class Factorizer:
 
 
 if __name__ == '__main__':
-    factorizer = Factorizer(97)
-    print(factorizer)
+    for i in range(1, 100):
+        print(Factorizer(i))
