@@ -169,6 +169,13 @@ class MonteCarloIntegrator(BaseIntegrator):
         return hits / n_tests * x_interval.measure * y_interval.measure
 
 
+class RiemannIntegrator(BaseIntegrator):
+    def compute_integral(self, domain, n_steps=10000):
+        discrete_domain = domain.discretize(n_steps)
+        discrete_range = self.f(discrete_domain)
+        return np.sum(discrete_range) * domain.measure / n_steps
+
+
 if __name__ == '__main__':
     integrator = MonteCarloIntegrator(lambda x: np.power(x, 2) + 4 * x * np.sin(x))
     interval = Interval(2, 3)
