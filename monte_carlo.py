@@ -177,8 +177,13 @@ class RiemannIntegrator(BaseIntegrator):
 
 
 if __name__ == '__main__':
-    integrator = MonteCarloIntegrator(lambda x: np.power(x, 2) + 4 * x * np.sin(x))
+    f = lambda x: np.power(x, 2) + 4 * x * np.sin(x)
     interval = Interval(2, 3)
-    integral = integrator.compute_integral(interval, n_tests=10000)
 
-    print("Integral on {} = {}".format(interval.bounds, integral))
+    integrator1 = MonteCarloIntegrator(f)
+    integral1 = integrator1.compute_integral(interval, n_tests=10000)
+    print("Using Monte Carlo method: Integral on {} = {}".format(interval.bounds, integral1))
+
+    integrator2 = RiemannIntegrator(f)
+    integral2 = integrator2.compute_integral(interval, n_steps=10000)
+    print("Computing Riemann Sum: Integral on {} = {}".format(interval.bounds, integral2))
