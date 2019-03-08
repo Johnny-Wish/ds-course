@@ -54,7 +54,7 @@ class GoldbachValidator(Validator):
         for p in primes:
             if (n - p) in primes:
                 if verbose:
-                    print("{} = {} + {}".format(n, p, n - p))
+                    print("{} = {} + {}".format(n, p, n - p), end="\n" if (run_id + 1) % 5 == 0 else " ")
                 return True
 
         if verbose:
