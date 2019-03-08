@@ -31,6 +31,11 @@ class Validator(ABC):
     def __init__(self):
         pass
 
+    @staticmethod
+    def map_run_id(run_id):
+        """map run_id to the primary argument of the statement"""
+        return run_id
+
     def validate(self, n_runs, verbose=True):
         for run in range(n_runs):
             if not self.argument(run, verbose=verbose):
@@ -44,8 +49,10 @@ class Validator(ABC):
 
 
 class GoldbachValidator(Validator):
-    def map_run_id(self, run_id):
-        return run_id * 2 + 4
+    @staticmethod
+    def map_run_id(run_id):
+        """map run_id to the primary argument of the statement"""
+        return run_id * 2 + 6
 
     def argument(self, run_id, verbose=True):
         n = self.map_run_id(run_id)
