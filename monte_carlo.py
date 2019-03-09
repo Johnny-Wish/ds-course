@@ -26,7 +26,7 @@ class Interval:
 
     def __eq__(self, other):
         """
-        determin whether two intervals are the same
+        determine whether two intervals are the same
         :param other: an other interval used for comparison
         :return: bool
         """
