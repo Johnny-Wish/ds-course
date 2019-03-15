@@ -1,0 +1,2 @@
+corpus.txt filter=lfs diff=lfs merge=lfs -text
+name-list.txt filter=lfs diff=lfs merge=lfs -text
