@@ -28,7 +28,7 @@ class Name:
         return "<{}:, surname={}, given-name={}, alias={}>".format(self.fullname, self.surname, self.given_name,
                                                                    self.alias)
 
-    def str(self):
+    def __str__(self):
         return self.__repr__().replace("-", " ")
 
     def total_occurrence(self, counter: dict):
