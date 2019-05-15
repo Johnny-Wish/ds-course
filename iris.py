@@ -13,7 +13,7 @@ def get_data(path="iris/iris.data", seed=None, test_size=0.3):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("-d", "--datafile", default="iris/iris.data", help="path to iris data")
+    parser.add_argument("-d", "--datafile", default="iris.data", help="path to iris data")
     parser.add_argument("-s", "--seed", default=0, type=int, help="random seed to be used")
     parser.add_argument("-t", "--test_size", default=0.3, type=float, help="size of test set")
     args = parser.parse_args()
